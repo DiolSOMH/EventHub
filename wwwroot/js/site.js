@@ -16,8 +16,7 @@
 
 document.querySelectorAll(".rsvp-form").forEach((form) => {
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the form from redirecting
-
+    event.preventDefault(); 
     const formData = new FormData(this); // Serialize the form data
     const url = this.action; // Get the form's action URL
     const rsvpButton = this.querySelector("button"); // The RSVP button inside the form

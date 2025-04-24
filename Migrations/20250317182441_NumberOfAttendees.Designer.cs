@@ -4,6 +4,7 @@ using Event.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Event.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250317182441_NumberOfAttendees")]
+    partial class NumberOfAttendees
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,17 +98,17 @@ namespace Event.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "dc7c40c4-21a0-41be-a270-582c58ecebf7",
+                            Id = "e948ffd8-d2da-4064-811f-79325a837d48",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "777cd27c-b1fc-436c-9f65-94f167e57d8e",
+                            ConcurrencyStamp = "afcaedbb-74db-4f0b-b519-9c18fec5b6b8",
                             Email = "pack@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "PACK@GMAIL.COM",
                             NormalizedUserName = "PACK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHI/zau5VUv46N/wSirkN3iBRU/SVMAe8ARgs0edh4jHr3COLpaAonLhKYesQiDpNw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEINZBH7B2bhOq2pj+idt4dcsm8KRa+EHESqdvmHKTnoJOMQ29wIWowTXuVI1A/uZsA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0e8b45cb-a557-4d91-a699-3fcd0a6d27d9",
+                            SecurityStamp = "bff9b064-fae1-479a-932b-9ed67a906785",
                             TwoFactorEnabled = false,
                             UserName = "Pack"
                         });
@@ -249,42 +252,30 @@ namespace Event.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
                     b.Property<string>("AuthorId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateProposed")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EventId")
+                        .HasColumnType("int");
+
                     b.Property<string>("EventTypes")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MoreDetails")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Service")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WorkingDays")
-                        .IsRequired()
+                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
+
+                    b.HasIndex("EventId");
 
                     b.ToTable("ServiceProposals");
                 });
@@ -318,13 +309,13 @@ namespace Event.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c707b873-c63a-4a01-870c-1c48e961ffa5",
+                            Id = "58bced0e-aa15-48c2-bbe9-0998debb7fda",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "3c1e914a-d2bd-4e92-bb74-f43e318f0a97",
+                            Id = "d57900d1-e8c9-4cff-9c64-ac13258d7499",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -487,11 +478,15 @@ namespace Event.Migrations
                 {
                     b.HasOne("Event.Models.AppUser", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AuthorId");
+
+                    b.HasOne("Event.Models.Eventt", "Event")
+                        .WithMany("ServiceProposals")
+                        .HasForeignKey("EventId");
 
                     b.Navigation("Author");
+
+                    b.Navigation("Event");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -553,6 +548,8 @@ namespace Event.Migrations
             modelBuilder.Entity("Event.Models.Eventt", b =>
                 {
                     b.Navigation("RSVPs");
+
+                    b.Navigation("ServiceProposals");
                 });
 #pragma warning restore 612, 618
         }

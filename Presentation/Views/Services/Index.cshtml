@@ -1,0 +1,33 @@
+@using Event.Presentation.ViewModels
+@model List<ServicePageViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Service Page";
+}
+@{
+    Layout = "_Layout";
+}
+
+<div>
+    <section>
+        <div class="section row feature-section align-items-center flex-md-row-reverse">
+            <div class="col-md-6 order-2 order-md-1">
+                <h1 class="display-4 fw-bold">
+                    "Elevate Your Business with EventHub – Register Your Services Today!"
+                </h1>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="assets/lady.jpg" alt="Chat with Organizers" class="feature-image">
+            </div>
+        </div>
+    </section>
+    <section class="feature-section text-center">
+        <h1 class="display-4 fw-bold">Why Register?</h1>
+        <div id="service-feature">
+            @foreach(var item in Model)
+            {
+                <partial name="_FeatureCard" model="item"/>
+            }
+        </div>
+    </section>
+</div>

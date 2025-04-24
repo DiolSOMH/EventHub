@@ -18,7 +18,7 @@ It will be used to expose events, giving organizers the chance to manage RSVPs, 
 
 Ensure you have the following installed:
 
-- **.NET SDK 7.0+**
+- **.NET SDK 8.0+**
 - **SQL Server** (or use SQLite for development)
 - **Docker** (for containerized deployment)
 

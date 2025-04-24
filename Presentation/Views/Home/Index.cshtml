@@ -1,0 +1,86 @@
+﻿@using Event.Models.ViewModels
+@model MainPageViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    Layout = "_Layout";
+}
+
+<section class="section bg-grey text-center">
+    <div class="hero-section">
+        <div class=" hero-text container">
+            <h1 class="display-4 fw-bold">Empowering Events, Connecting Services</h1>
+            <p class="lead mb-4">EventHub helps event organizers find reliable service providers and lets providers grow
+                their visibility by joining the network.</p>
+            <div class="justify-content-center gap-3">
+                <a href="/Services/Register" class="animated-gradient-btn btn btn-primary btn-lg">Register Your Service</a>
+            </div>
+        </div>
+        <div class="hero-image container">
+            <img src="assets/service.jpeg" alt="Chat with Organizers" class="feature-image">
+        </div>
+    </div>
+</section>
+<section class="section py-5 bg-grey text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Who do we exist for?</h1>
+    </div>
+</section>
+<section class="section py-5 bg-grey text-center" id="for">
+    <div class="description-section">
+        <div class="description-card card card-outline-primary">
+            <div class="card-body">
+                <h5 class="card-title">For Vendors/Service Providers</h5>
+                <p class="card-text">
+                    Offer a service for events?
+                    Register with EventHub to get matched with organizers who need what you provide.
+                    We actively scout events and promote your bussiness based on fit, quality, and demand
+                </p>
+                <a class="btn btn-primary btn-lg">More</a>
+            </div>
+        </div>
+
+        <div class="description-card card card-outline-primary">
+            <div class="card-body">
+                <h5 class="card-title">For Vendors/Service Providers</h5>
+                <p class="card-text">
+                    Offer a service for events?
+                    Register with EventHub to get matched with organizers who need what you provide.
+                    We actively scout events and promote your bussiness based on fit, quality, and demand
+                </p>
+                <a class="btn btn-primary btn-lg">Register Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="your-team-photo.jpg" alt="EventHub team in action" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h2 class="mb-3 text-success">What We Do at EventHub</h2>
+        <p>At EventHub, we don’t just wait for events to come to us — we go out and find them. Our team is constantly on the ground, connecting with event organizers and understanding their unique needs.</p>
+        <p>Once we know what an event requires, we carefully match it with the most suitable services from our pool of registered vendors.</p>
+        <p>Whether it’s a concert, a business seminar, a fashion show, or a traditional wedding, we believe every event deserves the right support.</p>
+        <p class="fw-bold">EventHub bridges the gap between great events and the people who make them happen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section py-5 bg-grey text-center">
+    <div class="hero-section">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Empowering Events, Connecting Services</h1>
+            <p class="lead mb-4">EventHub helps event organizers find reliable service providers and lets providers grow
+                their visibility by joining the network.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="/Services/Register" class="btn btn-primary btn-lg">Register Your Service</a>
+            </div>
+        </div>
+    </div>
+</section>
